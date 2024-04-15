@@ -1,0 +1,48 @@
+<mat-drawer-container class="example-container" autosize>
+    <!-- SIDENAV-->
+    <mat-drawer [opened]="true" #drawer class="example-sidenav bg-sidenav" mode="side">
+      <div class="grid-nav">
+        <div class="top-nav">
+          <mat-list>
+            <a href="#" mat-list-item>
+              <mat-icon matListItemIcon>dashboard</mat-icon>
+              <div appSize matListItemTitle>Dashboard</div>
+            </a>
+            <a href="#" mat-list-item>
+              <mat-icon matListItemIcon>school</mat-icon>
+              <div appSize matListItemTitle>Estudiantes</div>
+            </a>
+            <a href="#" mat-list-item>
+              <mat-icon matListItemIcon>group</mat-icon>
+              <div appSize matListItemTitle>Profesores</div>
+            </a>
+          </mat-list></div>
+        <div class="bot-nav">
+          <mat-list>
+            <a href="#" mat-list-item>
+              <mat-icon matListItemIcon>settings</mat-icon>
+              <div appSize matListItemTitle>Configuración</div>
+            </a>
+            <a href="#" mat-list-item>
+              <mat-icon matListItemIcon>power_settings_new</mat-icon>
+              <div appSize matListItemTitle>Cerrar sesión</div>
+            </a>
+          </mat-list></div>
+      </div>
+    </mat-drawer>
+  
+    <!-- TOOLBAR -->
+    <div class="example-sidenav-content">
+        <mat-toolbar class="bg-toolbar">
+            <button (click)="drawer.toggle()" mat-icon-button>
+              <mat-icon class="toolbar-text">menu</mat-icon>
+            </button>
+            <span class="toolbar-text">Mainspring English Institute</span>
+        </mat-toolbar>
+    </div>
+  
+    <div class="content-container">
+      <app-users></app-users>
+    </div>
+
+  </mat-drawer-container>

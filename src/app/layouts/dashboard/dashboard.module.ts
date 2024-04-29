@@ -3,8 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from '../../core/shared/shared.module';
 import { UsersModule } from './pages/users/users.module';
+import { HomeModule } from './pages/home/home.module';
+import { InscriptionsModule } from './pages/inscriptions/inscriptions.module';
+import { CoursesModule } from './pages/courses/courses.module';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { UsersModule } from './pages/users/users.module';
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
-    UsersModule
+    UsersModule,
+    HomeModule,
+    InscriptionsModule,
+    CoursesModule
   ],
   exports: [
     DashboardComponent

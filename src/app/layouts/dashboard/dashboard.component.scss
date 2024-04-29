@@ -5,10 +5,12 @@
   }
   .example-sidenav {
     width: 200px;
-    padding-left: 2px;
+    padding-left: 5px;
   }
   .content-container {
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
   }
   .bg-sidenav {
     background-color: #f79633;
@@ -32,4 +34,8 @@
   .bot-nav {
     grid-area: 6 / 1 / 7 / 2;
 
+  }
+  .avatar {
+    height: 3rem;
+    width: 3rem;
   }

@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { upperCaseValidator } from '../../../../../../shared/validators';
+import { upperCaseValidator } from '../../../../../../core/shared/validators';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IUsers } from '../../models';
 

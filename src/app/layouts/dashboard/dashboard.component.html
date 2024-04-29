@@ -3,46 +3,62 @@
     <mat-drawer [opened]="true" #drawer class="example-sidenav bg-sidenav" mode="side">
       <div class="grid-nav">
         <div class="top-nav">
-          <mat-list>
-            <a href="#" mat-list-item>
+          <mat-nav-list>
+            <a routerLink="home" mat-list-item>
               <mat-icon matListItemIcon>dashboard</mat-icon>
               <div appSize matListItemTitle>Dashboard</div>
             </a>
-            <a href="#" mat-list-item>
+            <a routerLink="students" mat-list-item>
               <mat-icon matListItemIcon>school</mat-icon>
               <div appSize matListItemTitle>Estudiantes</div>
             </a>
-            <a href="#" mat-list-item>
+            <a mat-list-item>
               <mat-icon matListItemIcon>group</mat-icon>
               <div appSize matListItemTitle>Profesores</div>
             </a>
-          </mat-list></div>
+            <a routerLink="courses" mat-list-item>
+              <mat-icon matListItemIcon>list</mat-icon>
+              <div appSize matListItemTitle>Cursos</div>
+            </a>
+            <a routerLink="inscriptions" mat-list-item>
+              <mat-icon matListItemIcon>playlist_add</mat-icon>
+              <div appSize matListItemTitle>Inscripciones</div>
+            </a>
+          </mat-nav-list></div>
         <div class="bot-nav">
-          <mat-list>
-            <a href="#" mat-list-item>
+          <mat-nav-list>
+            <a mat-list-item>
               <mat-icon matListItemIcon>settings</mat-icon>
               <div appSize matListItemTitle>Configuración</div>
             </a>
-            <a href="#" mat-list-item>
+            <a (click)="logout()" mat-list-item>
               <mat-icon matListItemIcon>power_settings_new</mat-icon>
               <div appSize matListItemTitle>Cerrar sesión</div>
             </a>
-          </mat-list></div>
+          </mat-nav-list>
+        </div>
       </div>
     </mat-drawer>
   
     <!-- TOOLBAR -->
     <div class="example-sidenav-content">
-        <mat-toolbar class="bg-toolbar">
-            <button (click)="drawer.toggle()" mat-icon-button>
-              <mat-icon class="toolbar-text">menu</mat-icon>
-            </button>
-            <span class="toolbar-text">Mainspring English Institute</span>
-        </mat-toolbar>
+      <mat-toolbar class="bg-toolbar">
+        <div class="d-flex justify-content-between align-items-center w-100">
+            <div class="d-flex align-items-center">
+              <button (click)="drawer.toggle()" mat-icon-button>
+                <mat-icon class="toolbar-text">menu</mat-icon>
+              </button>
+              <span class="toolbar-text">Mainspring English Institute</span>
+            </div>
+            <div class="text-right">
+                <div class="toolbar-text" *ngIf="authUser$ | async; let user"> {{ user?.firstName }} {{ user?.lastName }}</div>
+            </div>
+        </div>
+      </mat-toolbar>
     </div>
-  
+    <!-- CONTENIDO -->
     <div class="content-container">
-      <app-users></app-users>
-    </div>
+      <router-outlet />
+    </div> 
 
-  </mat-drawer-container>
+</mat-drawer-container>

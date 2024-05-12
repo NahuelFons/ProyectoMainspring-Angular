@@ -13,7 +13,7 @@ export class UserDetailComponent {
   user$: Observable<IUsers | undefined>
 
   constructor (private activatedRoute: ActivatedRoute, private usersService: UsersService) {
-    this.user$ = this.usersService.getUserById(parseInt(this.activatedRoute.snapshot.params['id']))
+    this.user$ = this.usersService.getUserById(this.activatedRoute.snapshot.params['id'])
   }
   
 }

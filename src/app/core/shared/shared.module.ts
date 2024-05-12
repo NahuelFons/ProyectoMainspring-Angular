@@ -17,6 +17,7 @@ import { ValidationPipePipe } from './validation-pipe.pipe';
 import { FullNamePipe } from './fullname.pipe';// No entiendo por que cuando agrego a exports: FullNamePipe se rompe todo.
 import { SizeDirective } from './size.directive'; 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatListModule,
     ValidationPipePipe,
     SizeDirective,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }

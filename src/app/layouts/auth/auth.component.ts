@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../core/service/auth.services';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-auth',
@@ -10,28 +12,29 @@ import { Subscription } from 'rxjs';
 })
 export class AuthComponent implements OnDestroy, OnInit{
   authUserChangeSubscription?: Subscription; 
+  loginForm: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) {} 
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private fb: FormBuilder,) {
+      this.loginForm = this.fb.group({
+        email: ['', [Validators.required, Validators.pattern(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)]],
+        password: ['', [Validators.required]]
+      })
+    } 
 
-  ngOnInit(): void {
-    this.SubscribeToAuthUserChange();
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.authUserChangeSubscription?.unsubscribe();
   }
 
-  SubscribeToAuthUserChange(): void{
-    this.authUserChangeSubscription = this.authService.authUser$.subscribe({
-      next: (authUser) => {
-        if (authUser != null){
-          this.router.navigate(['dashboard', 'home']);
-        }
-      },
-    });
-  }
-
   login() {
-    this.authService.login();
+    if(this.loginForm.invalid){
+      this.loginForm.markAllAsTouched();
+    } else {
+      this.authService.login(this.loginForm.getRawValue());
+    }
   }
 }

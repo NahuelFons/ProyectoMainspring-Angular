@@ -50,9 +50,19 @@
               </button>
               <span class="toolbar-text">Mainspring English Institute</span>
             </div>
+
             <div class="text-right">
-                <div class="toolbar-text" *ngIf="authUser$ | async; let user"> {{ user?.firstName }} {{ user?.lastName }}</div>
+              <div class="d-flex align-items-center">
+                  <img src="https://coderthemes.com/hyper_2/modern/assets/images/users/avatar-2.jpg" class="rounded-circle" width="42" height="42" alt="">
+                  <div style="padding-left: 5px;">
+                      <div class="profile-text" style="font-size: 18px; margin-bottom: -15px;" *ngIf="authUser$ | async; let user">
+                          {{ user?.firstName }} {{ user?.lastName }}
+                      </div>
+                      <div class="profile-text" style="font-size: 12px; margin-top: -15px;">Administrador</div>
+                  </div>
+              </div>
             </div>
+
         </div>
       </mat-toolbar>
     </div>

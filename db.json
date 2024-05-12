@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "Nahuel",
+      "lastName": "Fons",
+      "englishLevel": "B1",
+      "email": "nahuelfons@gmail.com",
+      "Role": "ADMIN",
+      "createdAt": "2024-05-08T12:30:45.678Z"
+    },
+    {
+      "id": "bda10",
+      "firstName": "Valeria",
+      "lastName": "Gomez",
+      "englishLevel": "A1",
+      "email": "valeriagomez@gmail.com",
+      "Role": "USER",
+      "createdAt": "2024-05-08T12:30:45.678Z"
+    },
+    {
+      "id": "bda11",
+      "firstName": "Lautaro",
+      "lastName": "Cabrera",
+      "englishLevel": "B2",
+      "email": "lautarocabrera@gmail.com",
+      "Role": "USER",
+      "createdAt": "2024-05-08T12:30:45.678Z"
+    },
+    {
+      "id": "834a",
+      "firstName": "Katja",
+      "lastName": "Schmukler",
+      "englishLevel": "A1",
+      "email": "katjaschmukler@gmail.com",
+      "Role": "USER",
+      "createdAt": "2024-05-08T12:30:45.678Z"
+    },
+    {
+      "id": "7578",
+      "firstName": "Nelson",
+      "lastName": "Pieczara",
+      "email": "nelsonpieczara@gmail.com",
+      "englishLevel": "B2",
+      "createdAt": "2024-05-12T17:00:33.610Z"
+    }
+  ],
+  "teachers": [],
+  "courses": [
+    {
+      "id": "1",
+      "name": "Kinder",
+      "description": "Para niños de 5 años. El aprendizaje se da a través de juegos, canciones, dramatizaciones y multimedia para aprender sin perder la magia del juego.",
+      "price": "50"
+    }
+  ],
+  "inscriptions": []
+}

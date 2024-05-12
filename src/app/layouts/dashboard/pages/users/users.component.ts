@@ -48,10 +48,12 @@ export class UsersComponent implements OnInit {
             if (editingUser) {
               this.users = this.users.map((u) => u.id === editingUser.id ? {...u, ...result} : u)
             } else {
-              result.id = new Date().getTime();
-              //result.id = new Date().getTime.toString().substring(0,3);
               result.createdAt = new Date();
-              this.users = [... this.users, result];
+              this.usersService.createUsers(result).subscribe({
+                next: (usuarioCreado) => {
+                  this.users = [...this.users, usuarioCreado];
+                },
+              })
             }
           } 
         }

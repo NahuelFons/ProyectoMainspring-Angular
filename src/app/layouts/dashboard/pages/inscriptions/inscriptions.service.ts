@@ -16,6 +16,7 @@ let INSCRIPTIONS_DB: IInscription [] = [
             firstName: 'Nahuel',
             lastName: 'Fons',
             englishLevel: 'B1',
+            role: 'ADMIN',
             email: 'nahuelfons@gmail.com',
             createdAt: new Date()
 

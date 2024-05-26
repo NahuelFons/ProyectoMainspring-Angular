@@ -23,6 +23,10 @@
         <span matListItemTitle>{{ user.createdAt | date }}</span>
         <span matListItemLine>Fecha de inscripción</span>
       </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>{{ inscription$ | async | json }}</span>
+        <span matListItemLine>Curso inscripto</span>
+      </mat-list-item>
     </mat-list>
 </ng-container>
 </div>

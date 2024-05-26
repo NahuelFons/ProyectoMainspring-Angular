@@ -23,14 +23,10 @@ export class UsersComponent implements OnInit {
     this.loading = true;    
     this.usersService.getUsers().subscribe({
       next: (users) => {
-        console.log('next: ', users); 
         this.users = users;
       },
-      error: (err) => {
-        console.log('error: ', err);
-      },
+      error: (err) => {},
       complete: () => {
-        console.log('complete!');
         this.loading = false;
       }
     })

@@ -1,5 +1,11 @@
 export interface ICourse {
-    id: number;
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+}
+
+export interface ICreateCoursePayload {
     name: string;
     description: string;
     price: number;

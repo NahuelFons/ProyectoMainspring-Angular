@@ -7,18 +7,18 @@ import { environment } from "../../../../../environments/environment";
 @Injectable({ providedIn: 'root'})
 export class UsersService {
 
-    constructor(private HttpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) {}
     
     getUsers(): Observable<IUsers[]> {
-        return this.HttpClient.get<IUsers[]>(environment.baseAPIURL + '/users')
+        return this.httpClient.get<IUsers[]>(environment.baseAPIURL + '/users')
     }
 
     getUserById(id:number): Observable<IUsers | undefined> {
-        return this.HttpClient.get<IUsers>(environment.baseAPIURL + '/users/' + id)
+        return this.httpClient.get<IUsers>(environment.baseAPIURL + '/users/' + id)
     }
 
     createUsers(payload: CreateUserPayload): Observable<IUsers> {
-        return this.HttpClient.post<IUsers>(environment.baseAPIURL + '/users', payload)
+        return this.httpClient.post<IUsers>(environment.baseAPIURL + '/users', payload)
     }
 
 }

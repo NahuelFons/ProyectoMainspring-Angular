@@ -5,17 +5,17 @@ export interface IUsers {
     id: number;
     firstName: string;
     lastName: string;
-    englishLevel: userLevel;
+    englishLevel: string;
     email: string;
-    role: UserRole;
+    role: string;
     createdAt: Date;
 }
 
 export interface CreateUserPayload {
     firstName: string | null;
     lastName: string | null;
-    englishLevel: userLevel | null;
+    englishLevel: string | null;
     email: string | null;
-    role: UserRole | null;
+    role: string | null;
     createdAt: Date | null;
 }

@@ -3,18 +3,20 @@ import { ICourse } from "../../courses/models";
 import { IUsers } from "../../users/models";
 
 export interface IInscription {
-    id: number;
+    id: string;
     course: ICourse;
-    enrolled: IUsers;
+    user: IUsers;
+    userId: string;
+    courseId: string;
 }
 
 export interface IInscriptionForm {
     course: FormControl<ICourse | null>,
-    enrolled: FormControl<IUsers | null>,
+    user: FormControl<IUsers | null>,
 }
 
-export interface ICreateInscriptionData {
+export interface ICreateInscriptionPayload {
     course: ICourse | null;
-    enrolled: IUsers | null;
+    user: IUsers | null;
 }
 

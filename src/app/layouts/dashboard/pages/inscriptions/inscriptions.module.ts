@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { InscriptionsRoutingModule } from './inscriptions-routing.module';
 import { InscriptionsComponent } from './inscriptions.component';
 import { SharedModule } from '../../../../core/shared/shared.module';
+import { EffectsModule } from '@ngrx/effects';
+import { InscriptionEffects } from './store/inscription.effects';
+import { inscriptionFeature } from './store/inscription.reducer';
+import { StoreModule } from '@ngrx/store';
 
 
 @NgModule({
@@ -13,7 +17,9 @@ import { SharedModule } from '../../../../core/shared/shared.module';
   imports: [
     CommonModule,
     InscriptionsRoutingModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature(inscriptionFeature),
+    EffectsModule.forFeature([InscriptionEffects])
   ],
   exports: [
     InscriptionsComponent

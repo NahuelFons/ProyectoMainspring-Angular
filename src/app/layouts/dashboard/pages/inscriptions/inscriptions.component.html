@@ -1,59 +1,67 @@
 <h1>Inscripciones</h1>
 
-<div class="mat-elevation-z8 inscription-container">
-  <form [formGroup]="inscriptionForm">
-    <div class="form-group">
-      <mat-form-field>
-        <mat-label>Curso</mat-label>
-        <mat-select formControlName="course">
-          <mat-option [value]="course" *ngFor="let course of courses"> {{course.name}} </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="form-group">
-      <mat-form-field>
-        <mat-label>Alumno</mat-label>
-        <mat-select formControlName="enrolled">
-          <mat-option [value]="user" *ngFor="let user of users"> {{user.firstName}} {{user.lastName}} </mat-option>
-        </mat-select>
-      </mat-form-field>
+@if (loadingInscriptions$ | async) {
+  <mat-spinner></mat-spinner>
+} @else {
+  @if (error$ | async) {
+    <h2 style="color: rgb(221, 21, 21);">Ha ocurrido un error al cargar las inscripciones.</h2>
+  } @else {
+
+    <div class="mat-elevation-z8 inscription-container">
+      <form [formGroup]="inscriptionForm">
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Curso</mat-label>
+            <mat-select formControlName="course">
+              <mat-option [value]="course" *ngFor="let course of courses"> {{course.name}} </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Alumno</mat-label>
+            <mat-select formControlName="user">
+              <mat-option [value]="user" *ngFor="let user of users"> {{user.firstName}} {{user.lastName}} </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-group">
+          <button (click)="createInscription()" mat-stroked-button>Asignar curso</button>
+        </div>
+      </form>
     </div>
     
-    <div class="form-group">
-      <button (click)="createInscription()" mat-stroked-button>Asignar curso</button>
-    </div>
-  </form>
-</div>
-
-<table mat-table [dataSource]="inscriptions" class="mat-elevation-z8">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>No.</th>
-      <td mat-cell *matCellDef="let element"> {{element.enrolled.id}} </td>
-    </ng-container>
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Nombre</th>
-      <td mat-cell *matCellDef="let element"> {{element.enrolled.lastName}} {{element.enrolled.firstName}}</td>
-    </ng-container>
-    <ng-container matColumnDef="englishLevel">
-      <th mat-header-cell *matHeaderCellDef>Nivel</th>
-      <td mat-cell *matCellDef="let element"> {{element.enrolled.englishLevel}} </td>
-    </ng-container>
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let element"> {{element.enrolled.email}} </td>
-    </ng-container>
-    <ng-container matColumnDef="enrolled">
-        <th mat-header-cell *matHeaderCellDef>Curso</th>
-        <td mat-cell *matCellDef="let element"> {{element.course.name}} </td>
+    <table mat-table [dataSource]="(inscriptions$ | async) || []" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element"> {{element.user.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element"> {{element.user.lastName}} {{element.user.firstName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="englishLevel">
+          <th mat-header-cell *matHeaderCellDef>Nivel</th>
+          <td mat-cell *matCellDef="let element"> {{element.user.englishLevel}} </td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
+        </ng-container>
+        <ng-container matColumnDef="course">
+            <th mat-header-cell *matHeaderCellDef>Curso</th>
+            <td mat-cell *matCellDef="let element"> {{element.course.name}} </td>
+          </ng-container>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element"> 
+              <button (click)="deleteInsciptionById(element.id)" mat-icon-button color="warn" matTooltip="Eliminar"><mat-icon>delete</mat-icon></button>
+            </td>
       </ng-container>
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Acciones</th>
-        <td mat-cell *matCellDef="let element"> 
-         <!-- <button mat-icon-button matTooltip="Editar"><mat-icon>edit</mat-icon></button> -->
-          <button (click)="onDeleteInscription(element.id)" mat-icon-button color="warn" matTooltip="Eliminar"><mat-icon>delete</mat-icon></button>
-        </td>
-  </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row columns: displayedColumns"></tr>
-</table>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row columns: displayedColumns"></tr>
+    </table>
+  }
+}

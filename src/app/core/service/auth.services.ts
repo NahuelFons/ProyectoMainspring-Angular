@@ -33,6 +33,7 @@ export class AuthService {
   verifyToken(): boolean {
     const token = localStorage.getItem('accessToken'); 
     if (token) {
+      this._authUser$.next(this.MOCK_AUTH_USER);
       return true;
     } else {
       return false;

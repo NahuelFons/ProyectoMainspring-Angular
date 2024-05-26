@@ -13,19 +13,19 @@ export class CourseDialogComponent {
   CourseForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder, 
-    private matDialogRef:MatDialogRef<CourseDialogComponent>,
+    private formBuilder: FormBuilder,
+    private matDialogRef: MatDialogRef<CourseDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private editingCourse?: ICourse
-  ){
-      this.CourseForm = this.formBuilder.group({
-        name: ['', [Validators.required, upperCaseValidator(), Validators.minLength(3)]],
-        price: ['', [Validators.required]],
-        description: ['', [Validators.required, upperCaseValidator(), Validators.minLength(35), Validators.maxLength(150)]],
-      })
-      
-      if (editingCourse){
-        this.CourseForm.patchValue(editingCourse)
-      }
+  ) {
+    this.CourseForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      price: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.minLength(35), Validators.maxLength(150)]],
+    });
+
+    if (editingCourse) {
+      this.CourseForm.patchValue(editingCourse);
+    }
   }
 
   get nameControl() {
@@ -40,12 +40,11 @@ export class CourseDialogComponent {
     return this.CourseForm.get('description');
   }
 
-  onSave(): void{
-    if (this.CourseForm.invalid){
+  onSave(): void {
+    if (this.CourseForm.invalid) {
       this.CourseForm.markAllAsTouched();
     } else {
       this.matDialogRef.close(this.CourseForm.value);
     }
   }
-
 }

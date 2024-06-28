@@ -2,8 +2,11 @@
   <div>
     <h1>Estudiantes</h1>
   </div>
-  <div >
-      <button (click)="openDialog()" mat-stroked-button>Inscribir estudiante</button>
+  <div class="d-flex align-items-center">
+    <mat-card appearance="outlined" class="m-2">
+      <mat-card-content class="p-2 fw-medium quatity" >Resultados {{ userCount }}</mat-card-content>
+    </mat-card>
+    <button (click)="openDialog()" mat-stroked-button>Inscribir estudiante</button>
   </div>
 </div>
 

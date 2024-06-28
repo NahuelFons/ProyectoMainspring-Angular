@@ -18,6 +18,7 @@ import { FullNamePipe } from './fullname.pipe';// No entiendo por que cuando agr
 import { SizeDirective } from './size.directive'; 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MatCardModule } from '@angular/material/card';
     ValidationPipePipe,
     SizeDirective,
     MatProgressSpinnerModule,
-    MatCardModule
+    MatCardModule,
+    MatChipsModule
   ]
 })
 export class SharedModule { }
